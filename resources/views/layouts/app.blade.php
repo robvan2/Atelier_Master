@@ -30,23 +30,23 @@
                 <ul class="list-unstyled components">
                     <p class="text-center">Hello Admin</p>
                     <li class="">
-                        <a href="#players" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            Players
+                        <a href="#predictions" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            predictions
                         </a>
-                        <ul class="collapse list-unstyled" id="players">
+                        <ul class="collapse list-unstyled" id="predictions">
                             <li>
-                                <a href="/players">Index</a>
+                                <a href="/predictions">Index</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#prize" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Prizes</a>
-                        <ul class="collapse list-unstyled" id="prize">
+                        <a href="#model" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Models</a>
+                        <ul class="collapse list-unstyled" id="model">
                             <li>
-                                <a href="/prizes">Index</a>
+                                <a href="/model/results">Our results</a>
                             </li>
                             <li>
-                                <a href="/prizes/create">Add prize</a>
+                                <a href="/model/training">Train a model</a>
                             </li>
                         </ul>
                     </li>
