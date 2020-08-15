@@ -17,3 +17,5 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/test', 'FlaskController@SendImage');
+Route::view('/trainTime', 'models.train_time');
+Route::view('/trainTime', 'models.efficientnet_cm');
