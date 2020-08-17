@@ -37,12 +37,12 @@
                 <ul class="list-unstyled components">
                     <p class="text-center">Hello Admin</p>
                     <li class="">
-                        <a href="#predictions" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <a href="#prediction" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             predictions
                         </a>
-                        <ul class="collapse list-unstyled" id="predictions">
+                        <ul class="collapse list-unstyled" id="prediction">
                             <li>
-                                <a href="/predictions">Index</a>
+                                <a href="/prediction">Index</a>
                             </li>
                         </ul>
                     </li>
@@ -86,7 +86,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item active mr-5">
-                                    <a class="nav-link" href="/home">Home</a>
+                                    <a class="nav-link" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
 

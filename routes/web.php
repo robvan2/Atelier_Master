@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/test', 'FlaskController@SendImage');
+
+Route::post('/prediction/predict', 'FlaskController@sendImage');
+Route::post('/test', 'FlaskController@predict');
+
+Route::get('/prediction', 'PagesController@prediction');
+
 Route::view('/trainTime', 'models.train_time');
 Route::view('/trainTime', 'models.efficientnet_cm');

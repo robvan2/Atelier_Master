@@ -9,18 +9,27 @@ class FlaskController extends Controller
 {
     public function sendImage(Request $request)
     {
-        /*$request->validate([
-            'image' => ['image', 'max|1999']
+        $request->validate([
+            'image' => ['image']
         ]);
-        $image = $request->file('prize_image');*/
-        //$image = public_path('/acc resnet50.png');
-        $image = fopen(public_path('/acc resnet50.png'), 'r');
-
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $name = $image->getClientOriginalName();
+            $image->storeAs('public/images/test/', $name);
+            return Http::get('http://127.0.0.1:8000/test',['name' => $name]);
+        }
+        return response(['message'=>'failed to get image please retry'],200);
+    }
+    public function predict(Request $request)
+    {
+        return public_path('/storage/images/test/'+$request->name);
+        $image = fopen(public_path('/storage/images/test/'+$request->name), 'r');
         $response = Http::attach(
-            'image',
-            $image,
-            'acc resnet50.png'
-        )->post('http://127.0.0.1:5000/predict');
+                'image',
+                $image,
+                $request->name
+        )->post('http://ca147890b483.ngrok.io/predict');
         return $response->body();
     }
+    
 }
