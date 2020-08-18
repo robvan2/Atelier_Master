@@ -16,19 +16,21 @@ class FlaskController extends Controller
             $image = $request->file('image');
             $name = $image->getClientOriginalName();
             $image->storeAs('public/images/test/', $name);
-            return Http::get('http://127.0.0.1:8000/test',['name' => $name]);
+            //need virtuel host
+            $response = Http::post('http://127.0.0.2/test',['name' => $name]);
+            return $response->body();
         }
-        return response(['message'=>'failed to get image please retry'],200);
+        return response(['message'=>'failed to get image please retry'],400);
     }
     public function predict(Request $request)
-    {
-        return public_path('/storage/images/test/'+$request->name);
-        $image = fopen(public_path('/storage/images/test/'+$request->name), 'r');
+    {   
+        $img_url = public_path('/storage/images/test/'.$request->name);
+        $image = fopen($img_url, 'r');
         $response = Http::attach(
                 'image',
                 $image,
                 $request->name
-        )->post('http://ca147890b483.ngrok.io/predict');
+        )->post('http://20a33a1462eb.ngrok.io/predict');
         return $response->body();
     }
     
