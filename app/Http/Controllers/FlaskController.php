@@ -30,7 +30,7 @@ class FlaskController extends Controller
                 'image',
                 $image,
                 $request->name
-        )->post('http://20a33a1462eb.ngrok.io/predict');
+        )->post('http://69acaee121f3.ngrok.io/predict');
         return $response->body();
     }
     

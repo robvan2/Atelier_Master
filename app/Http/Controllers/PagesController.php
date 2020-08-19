@@ -11,4 +11,8 @@ class PagesController extends Controller
     {
         return view('prediction.index');
     }
+    public function results()
+    {
+        return view('training.results');
+    }
 }
