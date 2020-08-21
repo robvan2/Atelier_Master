@@ -109,6 +109,22 @@
                     point:{
                         radius: 0
                     }
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Training loss',
+                            fontSize: 14
+                        }     
+                    }],
+                    xAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Epochs',
+                            fontSize: 14
+                        }     
+                    }]
                 }
             }
         });
@@ -168,6 +184,22 @@
                     point:{
                         radius: 0
                     }
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Training Accuracy',
+                            fontSize: 14
+                        }     
+                    }],
+                    xAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Epochs',
+                            fontSize: 14
+                        }     
+                    }]
                 }
             }
         });
@@ -226,6 +258,22 @@
                     point:{
                         radius: 0
                     }
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Validation loss',
+                            fontSize: 14
+                        }     
+                    }],
+                    xAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Epochs',
+                            fontSize: 14
+                        }     
+                    }]
                 }
             }
         });
@@ -289,6 +337,22 @@
                     point:{
                         radius: 0
                     }
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Validation Accuracy',
+                            fontSize: 14
+                        }     
+                    }],
+                    xAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Epochs',
+                            fontSize: 14
+                        }     
+                    }]
                 }
             }
         });
