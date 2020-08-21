@@ -13,16 +13,16 @@
             </h1>
         </div>
         <div class="row mt-5">
-            <div class="container d-block col-md-6 p-4">
+            <div class="container d-block col-md-6 col-12 p-4">
                 <h2>lorem :</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Quasi impedit voluptates officiis aut explicabo. Officiis rem, quo laborum 
                     quis laudantium nobis iure repellendus explicabo libero dicta fugiat in, vitae asperiores!</p>
             </div>
-            <canvas id="training-loss" class="col-md-6 d-inline"></canvas>
+            <canvas id="training-loss" class="col-md-6 col-12 d-inline"></canvas>
         </div>
         <div class="row mt-5">
-            <canvas id="training-accuracy" class="col-md-6 d-inline"></canvas>
+            <canvas id="training-accuracy" class="col-md-6 col-12 d-inline"></canvas>
             <div class="container d-block col-md-6 p-4">
                 <h2>lorem :</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -32,17 +32,17 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="container d-block col-md-6 p-4">
+            <div class="container d-block col-md-6 col-12 p-4">
                 <h2>lorem :</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Quasi impedit voluptates officiis aut explicabo. Officiis rem, quo laborum 
                     quis laudantium nobis iure repellendus explicabo libero dicta fugiat in, vitae asperiores!
                 </p>
             </div>
-            <canvas id="val-loss" class="col-md-6 d-inline"></canvas>
+            <canvas id="val-loss" class="col-md-6 col-12 d-inline"></canvas>
         </div>
         <div class="row mt-5 mb-5">
-            <canvas id="val-accuracy" class="col-md-6 d-inline"></canvas>
+            <canvas id="val-accuracy" class="col-md-6 col-12 d-inline"></canvas>
             <div class="container d-block col-md-6 p-4">
                 <h2>lorem :</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
