@@ -58,7 +58,7 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="/home">Home</a>
+                        <a href="/">Home</a>
                     </li>
                 </ul>
 

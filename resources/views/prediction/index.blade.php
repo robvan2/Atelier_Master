@@ -15,12 +15,13 @@
         </div>
         <div class="row">
             <div class="container mt-2">
-                <form action="/prediction/predict" method="post" class="pl-5 pr-5" enctype="multipart/form-data">
+                <form action="/prediction/predict" method="post" class="pl-5 pr-5" enctype="multipart/form-data" 
+                onsubmit="handleSubmit(this);">
                     @csrf
                     <div class="custom-file ">
                       <label for="image" id="img_label" class="custom-file-label">Selectionner image</label>
                       <input type="file" accept="image/*" class="custom-file-input" name="image" id="image" style="cursor: pointer"
-                       onchange="readURL(this);">
+                       onchange="readURL(this);" required>
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-6 offset-md-3" id="fig-1">
@@ -55,6 +56,33 @@
                 reader.readAsDataURL(file);
             }
             $('#img_label').text(file.name)
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function handleSubmit(form){
+            event.preventDefault();
+            let formData = new FormData(form);
+
+            axios.post('/prediction/predict', formData)
+            .then(function (response) {
+                var image = response.data.image;
+                console.log(image);
+                axios.get('/test', {
+                        params: {
+                            image: image
+                        }
+                })
+                .then(function (response2) {
+                    alert('Predicted class : '+response2.data.prediction);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         }
     </script>
 @endsection

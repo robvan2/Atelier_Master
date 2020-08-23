@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::post('/prediction/predict', 'FlaskController@sendImage');
-Route::post('/test', 'FlaskController@predict');
+Route::get('/test', 'FlaskController@predict');
 
 Route::get('/prediction', 'PagesController@prediction');
 Route::get('/model/results', 'PagesController@results');
