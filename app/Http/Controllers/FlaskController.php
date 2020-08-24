@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\File;
 
 class FlaskController extends Controller
 {
@@ -29,7 +30,8 @@ class FlaskController extends Controller
             'image',
             $image,
             $request->image
-        )->post('http://c7d0145ed80b.ngrok.io/predict');
+        )->post('http://a79707b07725.ngrok.io/predict');
+        File::delete($img_url);
         return $response->body();
     }
 }

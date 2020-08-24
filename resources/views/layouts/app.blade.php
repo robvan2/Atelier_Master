@@ -10,8 +10,7 @@
     <title>{{ config('app.name', 'Admin Panel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Styles -->
@@ -31,23 +30,23 @@
             <!-- Sidebar  -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <h3 class="text-center">Admin Panel</h3>
+                    <h3 class="text-center">Prediction de Pneumonie</h3>
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p class="text-center">Hello Admin</p>
+                    <p class="text-center">Bonjour Admin</p>
                     <li class="">
                         <a href="#prediction" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            predictions
+                            Prédictions
                         </a>
                         <ul class="collapse list-unstyled" id="prediction">
                             <li>
-                                <a href="/prediction">Index</a>
+                                <a href="/prediction">Accueil</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#model" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Models</a>
+                        <a href="#model" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Modèles</a>
                         <ul class="collapse list-unstyled" id="model">
                             <li>
                                 <a href="/model/results">Our results</a>
@@ -61,13 +60,13 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="/">Home</a>
+                        <a href="/">Accueil</a>
                     </li>
                 </ul>
 
                 <ul class="list-unstyled CTAs">
                     <li>
-                        <a href="/admin/logout" class="btn btn-default btn-block">Logout</a>
+                        <a href="/admin/logout" class="btn btn-default btn-block">Déconnecter</a>
                     </li>
                 </ul>
             </nav>
@@ -78,7 +77,7 @@
 
                         <button type="button" id="sidebarCollapse" class="btn btn-info">
                             <i class="fa fa-align-left"></i>
-                            <span>Tasks Menu</span>
+                            <span>menu des tâches</span>
                         </button>
                         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -89,13 +88,13 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item active mr-5">
-                                    <a class="nav-link" href="/">Home</a>
+                                    <a class="nav-link" href="/">Accueil</a>
                                 </li>
                                 <li class="nav-item">
 
                                     <a class="nav-link" href="/admin/logout">
                                         <i class="fas fa-sign-out-alt"></i>
-                                        Logout
+                                        Déconnecter
                                     </a>
                                 </li>
                             </ul>
@@ -107,15 +106,19 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
+        crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
+        crossorigin="anonymous">
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
+        crossorigin="anonymous">
     </script>
+
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 

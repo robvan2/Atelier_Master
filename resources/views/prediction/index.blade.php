@@ -35,7 +35,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button type="submit" class="mb-5 btn btn-lg btn-primary col-md-3 offset-md-9">
+                        <button id="sub" type="submit" class="mb-5 btn btn-lg btn-primary col-md-3 offset-md-9">
+                            <span id="loading" class="spinner-border spinner-border-md mr-2" role="status" aria-hidden="true" style="display: none"></span>
                             Submit
                         </button>
                     </div>
@@ -63,7 +64,10 @@
         function handleSubmit(form){
             event.preventDefault();
             let formData = new FormData(form);
-
+            $('#loading').css('display','');
+            var sub = $('#sub');
+            var span = sub.children('span');
+            sub.html(span);
             axios.post('/prediction/predict', formData)
             .then(function (response) {
                 var image = response.data.image;
@@ -74,9 +78,17 @@
                         }
                 })
                 .then(function (response2) {
-                    alert('Predicted class : '+response2.data.prediction);
+                    sub.html('Submit');
+                    var message = 'Predicted class : '+response2.data.prediction;
+                    if (response2.data.prediction === 'Normal') {
+                        message += ' with percentage = ' + (100-response2.data.percentage);
+                    } else {
+                        message += ' with percentage = ' + response2.data.percentage;
+                    }
+                    alert(message);
                 })
                 .catch(function (error) {
+                    sub.html('Submit');
                     console.log(error);
                 });
             })
