@@ -41,7 +41,7 @@
             </div>
             <canvas id="val-loss" class="col-md-6 col-12 d-inline"></canvas>
         </div>
-        <div class="row mt-5 mb-5">
+        <div class="row mt-5">
             <canvas id="val-accuracy" class="col-md-6 col-12 d-inline"></canvas>
             <div class="container d-block col-md-6 p-4">
                 <h2>lorem :</h2>
@@ -50,6 +50,9 @@
                     quis laudantium nobis iure repellendus explicabo libero dicta fugiat in, vitae asperiores!
                 </p>
             </div>
+        </div>
+        <div class="row mt-5">
+            <canvas id="bar-chart" class="col-md-12 col-12 d-inline"></canvas>
         </div>
     </div>
     <script>
@@ -353,6 +356,62 @@
                             fontSize: 14
                         }     
                     }]
+                }
+            }
+        });
+    </script>
+    <script>
+        var test = document.getElementById('bar-chart').getContext('2d');
+        var test1 = new Chart(test, {
+            type: 'bar',
+            data: {
+                labels: ['VGG-16','Inception-V3','MobileNet-V2','EfficientNet-B4','ResNet-50'],
+                datasets: [
+                {
+                    label: 'Justesse',
+                    data: [0.9215,0.9375,0.9327,0.9327,0.9279],
+                    backgroundColor	: 'rgba(255, 77, 77, 1)'
+                },
+                {
+                    label: 'F1-score',
+                    data: [0.9366 , 0.9502 , 0.9483 , 0.9467 , 0.9419],
+                    backgroundColor	: 'rgba(72, 157, 57, 1)'
+                }
+                ]
+                
+            },
+            options: {
+                title: {
+                    text : 'Comparaison entre les résultats des différents modèles',
+                    display: true,
+                    position: 'bottom'
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Valeur F1-score / justesse',
+                            fontSize: 14
+                        },
+                        ticks: {
+                            suggestedMin: 0.915,
+                            suggestedMax: 0.96
+                        }     
+                    }],
+                    xAxes: [{
+                        scaleLabel:{
+                            display: true,
+                            labelString: 'Modèle',
+                            fontSize: 14,
+                        },
+                        categoryPercentage: 0.5,
+                        barPercentage: 1     
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontSize: 18
+                    }
                 }
             }
         });
