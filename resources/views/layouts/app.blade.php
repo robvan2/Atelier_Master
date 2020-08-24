@@ -55,6 +55,9 @@
                             <li>
                                 <a href="/model/training">Train a model</a>
                             </li>
+                            <li>
+                                <a href="/executionTime">Execution Time</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="active">
