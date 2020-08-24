@@ -23,5 +23,6 @@ Route::get('/test', 'FlaskController@predict');
 Route::get('/prediction', 'PagesController@prediction');
 Route::get('/model/results', 'PagesController@results');
 
-Route::view('/trainTime', 'models.train_time');
+Route::view('/executionTime', 'models.execution_time');
 Route::view('/trainTime', 'models.efficientnet_cm');
+Route::view('/model/training', 'prediction.train');

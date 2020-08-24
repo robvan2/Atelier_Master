@@ -1,6 +1,10 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
+
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/light.js"></script>
     <!-- amCharts javascript code -->
 		<script type="text/javascript">
 			AmCharts.makeChart("chartdiv",
@@ -43,7 +47,7 @@
 						{
 							"id": "Title-1",
 							"size": 15,
-							"text": "Temps d'entraînement "
+							"text": "Temps d'execution "
 						}
 					],
 					"dataProvider": [
