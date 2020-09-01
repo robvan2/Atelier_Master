@@ -41,6 +41,8 @@ def train():
     from keras.models import Model
     from keras.layers import Dense, GlobalAveragePooling2D, Dropout, BatchNormalization, Flatten
     from keras import backend as K
+    from keras.callbacks import ReduceLROnPlateau, ModelCheckpoint
+    from keras.optimizers import Adam, RMSprop
 
     base_model = MobileNetV2(include_top=False, weights='imagenet', input_shape=(targetx, targety, 3))
 
@@ -48,7 +50,7 @@ def train():
 
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
-    x = BatchNormalization()(x)
+    x = Dropout(0.5)(x)
     x = Dense(128, activation='relu')(x)
     x = Dropout(0.2)(x)
     x = BatchNormalization()(x)
@@ -74,10 +76,6 @@ def train():
         target_size=(targetx, targety),
         batch_size=batch_size,
         class_mode='binary')
-
-    from keras.callbacks import ReduceLROnPlateau, ModelCheckpoint
-    from keras.optimizers import Adam, RMSprop
-
 
     mc_loss = ModelCheckpoint('model-mobileNetV2-loss.hdf5',
                               save_best_only=True,

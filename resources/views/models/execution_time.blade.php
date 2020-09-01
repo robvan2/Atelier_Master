@@ -17,7 +17,7 @@
 					"theme": "light",
 					"categoryAxis": {
 						"gridPosition": "start",
-						"title": "Les réseaux neurones"
+						"title": "Les réseaux de neurones"
 					},
 					"trendLines": [],
 					"graphs": [
@@ -34,7 +34,7 @@
 					"valueAxes": [
 						{
 							"id": "ValueAxis-1",
-							"title": "Temps en Seconde"
+							"title": "Temps (secondes)"
 						}
 					],
 					"allLabels": [],
@@ -76,6 +76,6 @@
 			);
 		</script>
 	<body>
-		<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;" ></div>
+		<div id="chartdiv" class="col-md-12" style="height: 700px; background-color: #FFFFFF;" ></div>
 	</body>
 @endsection

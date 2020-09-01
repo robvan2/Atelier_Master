@@ -66,7 +66,7 @@
 
                 <ul class="list-unstyled CTAs">
                     <li>
-                        <a href="/admin/logout" class="btn btn-default btn-block">Déconnecter</a>
+                        <a href="/logout" id="logout" class="btn btn-default btn-block">Déconnecter</a>
                     </li>
                 </ul>
             </nav>
@@ -92,7 +92,7 @@
                                 </li>
                                 <li class="nav-item">
 
-                                    <a class="nav-link" href="/admin/logout">
+                                    <a class="nav-link" href="/logout">
                                         <i class="fas fa-sign-out-alt"></i>
                                         Déconnecter
                                     </a>
@@ -129,5 +129,13 @@
             });
         });
     </script>
+    <style>
+        #logout{
+            color: #fff
+        };
+        #logout:hover{
+            color: #3f81d8;
+        };
+    </style>
 </body>
 </html>
