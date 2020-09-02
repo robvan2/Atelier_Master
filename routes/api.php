@@ -23,6 +23,7 @@ Route::post('/register', 'AuthApiController@register');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/logout', 'AuthApiController@logout');
+    Route::get('/checktoken', 'AuthApiController@checkToken');
 
     Route::post('/prediction/predict', 'FlaskController@sendImage');
     Route::get('/test', 'FlaskController@predict');

@@ -42,4 +42,8 @@ class AuthApiController extends Controller
         $request->user()->tokens()->delete();
         return response(['message' => 'user logged-out'], 200);
     }
+    public function checkToken(Request $request)
+    {
+        return response(['message' => 'valid token'], 200);
+    }
 }
