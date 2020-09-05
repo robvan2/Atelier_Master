@@ -24,13 +24,12 @@ class FlaskController extends Controller
     public function predict(Request $request)
     {
         $img_url = public_path('storage/images/test/' . $request->image);
-        //return \response(['url' => $img_url, 'image' => $request->image], 200);
         $image = fopen($img_url, 'r');
         $response = Http::attach(
             'image',
             $image,
             $request->image
-        )->post('http://a79707b07725.ngrok.io/predict');
+        )->post('http://080d201fc840.ngrok.io/predict');
         File::delete($img_url);
         return $response->body();
     }

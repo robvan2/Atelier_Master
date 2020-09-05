@@ -1,6 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        #img-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: #008CBA;
+        }
+
+        .img-text {
+        color: white;
+        font-size: 1rem;
+        position: absolute;
+        top: 30%;
+        left: 0%;
+        height: 100%;
+        width: 100%;
+        text-align: justify-center;
+        }
+        .img-inner-text{
+            color: white;
+        }
+    </style>
     <div class="container border rounded" style="background-color: #f8f9fa">
         <div class="row text-center mt-2">
             <h1 class="col-12">Prediction API</h1>
@@ -26,8 +54,20 @@
                     <div class="row mt-4">
                         <div class="col-md-6 offset-md-3" id="fig-1">
                             <div class="row">
-                                <img id="display_image" class="img-fluid col-md-8 offset-md-2" src="http://placehold.it/350" 
-                                alt="uploaded_image">
+                                <div id="img-container" class="col-md-8 offset-md-2 p-0">
+                                    <img id="display_image" class="img-fluid m-0" src="http://placehold.it/350" 
+                                    alt="uploaded_image">
+                                    <div id="img-overlay">
+                                        <div class="img-text">
+                                            <p class="img-inner-text p-2 m-2">
+                                                <b>Classe de prédiction : </b> <span id="pred"></span> 
+                                            </p>
+                                            <p class="img-inner-text p-2 m-2">
+                                                <b>Pourcentage : </b> <span id="percentage"> 90% </span>
+                                            </p>
+                                        </div>
+                                      </div>
+                                </div>
                             </div>
                             <div class="row text-center">
                                <p></p>
@@ -50,8 +90,10 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#display_image')
-                        .attr('src', e.target.result);
+                    var img = $('#display_image');
+                    var overlay = $('#img-overlay');
+                    overlay.css('opacity','0');
+                    img.attr('src', e.target.result);
                 };
                 var file = input.files[0];
                 reader.readAsDataURL(file);
@@ -64,9 +106,9 @@
         function handleSubmit(form){
             event.preventDefault();
             let formData = new FormData(form);
-            $('#loading').css('display','');
             var sub = $('#sub');
-            var span = sub.children('span');
+            let span = $('#loading');
+            span.css('display','');
             sub.html(span);
             axios.post('/prediction/predict', formData)
             .then(function (response) {
@@ -78,21 +120,26 @@
                         }
                 })
                 .then(function (response2) {
-                    sub.html('Submit');
-                    var message = 'Predicted class : '+response2.data.prediction;
-                    if (response2.data.prediction === 'Normal') {
-                        message += ' with percentage = ' + (100-response2.data.percentage);
+                    span.css('display','none');
+                    sub.html(sub.html() + 'Submit');
+                    prediction = response2.data.prediction;
+                    if (prediction === 'Normal') {
+                        percentage = ''+(100-response2.data.percentage) + ' %';
                     } else {
-                        message += ' with percentage = ' + response2.data.percentage;
+                        percentage = response2.data.percentage + ' %';
                     }
-                    alert(message);
+                    $('#percentage').html(percentage);
+                    $('#pred').html(prediction);
+                    var overlay = $('#img-overlay');
+                    overlay.css('opacity','0.8');
                 })
                 .catch(function (error) {
-                    sub.html('Submit');
+                    sub.html(span.html() + 'Submit');
                     console.log(error);
                 });
             })
             .catch(function (error) {
+                sub.html(span.html() + 'Submit');
                 console.log(error);
             });
         }
