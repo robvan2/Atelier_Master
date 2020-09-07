@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-justify">
+<div class="container text-justify mb-5">
     <h2>Pneumonie :</h2>
     <p class="text-justify">La pneumonie est une maladie courante qui continue à être l’une des principales causes de décès des enfants 
         dans les pays en cours de développement et des personnes âgées dans les pays développés [3]. C’est une 
