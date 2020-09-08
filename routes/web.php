@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('home');
     });
+
+    Route::post('/prediction/serverUrl', 'FlaskController@setUrl');
     Route::post('/prediction/predict', 'FlaskController@sendImage');
     Route::get('/test', 'FlaskController@predict');
 

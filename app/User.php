@@ -43,4 +43,8 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+    public function serverUrl()
+    {
+        return $this->hasOne('App\UserServerUrl');
+    }
 }
