@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserServerUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,8 @@ class FlaskController extends Controller
     }
     public function predict(Request $request)
     {
-        $serverUrl = Auth::user()->serverUrl;
+        $user = User::find(Auth::user()->id);
+        $serverUrl = $user->serverUrl;
         if (!$serverUrl) {
             return response(['message' => 'Server url is not defined .'], 422);
         }
@@ -41,6 +43,8 @@ class FlaskController extends Controller
             $request->image
         )->post($serverUrl->url . 'predict');
         File::delete($img_url);
+        $user->predictions_count = $user->predictions_count + 1;
+        $user->save();
         return $response->body();
     }
     public function setUrl(Request $request)

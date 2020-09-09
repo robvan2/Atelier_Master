@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\UserServerUrl');
     }
+    public function role()
+    {
+        return $this->hasOne('App\Role');
+    }
 }

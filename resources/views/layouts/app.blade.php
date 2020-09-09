@@ -66,11 +66,18 @@
                             <li>
                                 <a href="/model/results">Our results</a>
                             </li>
-                            <li>
-                                <a href="/model/training">Train a model</a>
-                            </li>
+                            @if (Auth::user()->role->role == 'admin')
+                                <li>
+                                    <a href="/model/training">Train a model</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
+                    @if (Auth::user()->role->role == 'admin')
+                        <li>
+                            <a href="/users">Utilisateurs</a>
+                        </li>
+                    @endif
                     <li class="active">
                         <a href="/">Accueil</a>
                     </li>

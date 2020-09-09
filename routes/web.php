@@ -36,5 +36,9 @@ Route::middleware('auth')->group(function () {
 
     Route::view('/executionTime', 'models.execution_time');
     Route::view('/trainTime', 'models.efficientnet_cm');
-    Route::view('/model/training', 'prediction.train');
+
+    Route::middleware('admin')->group(function () {
+        Route::get('/model/training', 'PagesController@trainModel');
+        Route::get('/users', 'PagesController@users');
+    });
 });
