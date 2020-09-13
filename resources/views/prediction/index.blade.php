@@ -28,6 +28,16 @@
         .img-inner-text{
             color: white;
         }
+        .form-check *{
+            cursor: pointer;
+        }
+        .form-check span{
+            color: #03a9e0;
+            text-decoration: underline;
+        }
+        .form-check span:hover{
+            color: #005875;
+        }
         #setting-btn{
             color: #818080; 
             cursor: pointer;
@@ -118,7 +128,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button id="sub" type="submit" class="mb-5 btn btn-lg btn-primary col-md-3 offset-md-9">
+                        <div class="form-check col-12 col-md-6 pt-3">
+                            <label class="form-check-label"  style="cursor: pointer">
+                                <input class="form-check-input"  style="cursor: pointer" type="checkbox" name="helpus" id="helpus" value="1"> 
+                                J'accepte d'ameliorer la platforme 
+                            </label>
+                            <span class="helpus-popover col-2" tabindex="0" data-toggle="popover" data-trigger="focus" title="Améliorer la platforme" 
+                                    data-content="En acceptant vous autorisé l'application de sauvegarder votre radiographie pour 
+                                    l'utilisée dans des futures recherches (vos informations personnelles reste anonyme).">
+                                         ?     
+                            </span>
+                            <script>
+                                $(function () {
+                                    $('[data-toggle="popover"]').popover()
+                                });
+                            </script>
+                        </div>
+                        <button id="sub" type="submit" class="mb-5 btn btn-lg btn-primary col-12 col-md-3 offset-md-3">
                             <span id="loading" class="spinner-border spinner-border-md mr-2" role="status" aria-hidden="true" style="display: none"></span>
                             Submit
                         </button>
@@ -162,6 +188,7 @@
                         }
                 })
                 .then(function (response2) {
+                    console.log(response2);
                     span.css('display','none');
                     sub.html(sub.html() + 'Submit');
                     prediction = response2.data.prediction;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Prediction;
 use App\User;
 use App\UserServerUrl;
 use Illuminate\Http\Request;
@@ -15,12 +16,19 @@ class FlaskController extends Controller
     public function sendImage(Request $request)
     {
         $request->validate([
-            'image' => ['image']
+            'image' => ['required', 'image']
         ]);
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = $image->getClientOriginalName();
             $image->storeAs('public/images/test/', $name);
+            if ($request->helpus) {
+                $ext = $image->getClientOriginalExtension();
+                $str = rand();
+                $new_name = md5($str);
+                $file_name = $new_name . '.' . $ext;
+                $image->storeAs('/dataset/new/', $file_name);
+            }
             return response(['image' => $name], 200, ['content' => 'application/json']);
         }
         return response(['message' => 'failed to get image please retry'], 400);
@@ -44,6 +52,12 @@ class FlaskController extends Controller
         )->post($serverUrl->url . 'predict');
         File::delete($img_url);
         $user->predictions_count = $user->predictions_count + 1;
+        if ($response->object()->prediction) {
+            $prediction = new Prediction();
+            $prediction->user_id = $user->id;
+            $prediction->predicted_class = $response->object()->prediction;
+            $prediction->save();
+        }
         $user->save();
         return $response->body();
     }

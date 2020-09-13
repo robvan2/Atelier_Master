@@ -40,5 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::get('/model/training', 'PagesController@trainModel');
         Route::get('/users', 'PagesController@users');
+        Route::post('/users/detail', 'PagesController@userModal');
     });
 });

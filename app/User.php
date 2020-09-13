@@ -51,4 +51,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Role');
     }
+    public function predictions()
+    {
+        return $this->hasMany('App\Prediction');
+    }
 }
