@@ -45,7 +45,13 @@
                             </div>
                             
                             @include('layouts.errors')
-                            
+
+                            <div class="form-check text-left col-12 p-0 ml-4 mt-3">
+                                <label class="form-check-label"  style="cursor: pointer">
+                                    <input class="form-check-input"  style="cursor: pointer" type="checkbox" name="rememberMe" id="rememberMe" value="1"> 
+                                    Remember Me 
+                                </label>
+                            </div>
                             <hr class="my-2">
                             <button type="submit" class="btn btn-primary col-md-4 col-sm-12">Login</button>
                         </form>

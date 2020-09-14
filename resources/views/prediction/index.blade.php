@@ -54,7 +54,7 @@
         <div class="row text-center mt-2">
             <h1 class="col-8 offset-2">Prediction API</h1>
             <!-- Button trigger modal -->
-            <i class="fa fa-3x fa-cog col-1 offset-1" id="setting-btn"aria-hidden="true" data-toggle="modal" data-target="#setServerUrl">
+            <i class="fa fa-3x fa-cog offset-0 col-1" id="setting-btn"aria-hidden="true" data-toggle="modal" data-target="#setServerUrl">
             </i>
             
             <!-- Modal -->
@@ -99,7 +99,7 @@
                 <form action="/prediction/predict" method="post" class="pl-5 pr-5" enctype="multipart/form-data" 
                 onsubmit="handleSubmit(this);">
                     @csrf
-                    <div class="custom-file ">
+                    <div class="custom-file">
                       <label for="image" id="img_label" class="custom-file-label">Selectionner image</label>
                       <input type="file" accept="image/*" class="custom-file-input" name="image" id="image" style="cursor: pointer"
                        onchange="readURL(this);" required>

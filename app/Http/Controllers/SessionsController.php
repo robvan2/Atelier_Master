@@ -17,8 +17,11 @@ class SessionsController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
-        if (!Auth::attempt($credentials)) {
+        $remember = false;
+        if ($request->rememberMe) {
+            $remember = true;
+        }
+        if (!Auth::attempt($credentials, $remember)) {
             return back()->withErrors([
                 'message' => 'The email or password is incorrect, please try again'
             ]);

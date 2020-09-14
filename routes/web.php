@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('admin')->group(function () {
         Route::get('/model/training', 'PagesController@trainModel');
+        Route::post('/model/training', 'FlaskController@trainModel');
         Route::get('/users', 'PagesController@users');
         Route::post('/users/detail', 'PagesController@userModal');
     });
