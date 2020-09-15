@@ -83,17 +83,24 @@ class FlaskController extends Controller
         if (!$serverUrl) {
             return response(['message' => 'Server url is not defined .'], 422);
         }
-        $serverUrl = $serverUrl . 'train';
+        $serverUrl = $serverUrl->url . 'train';
         $request->validate([
-            'model' => ['required'],
-            'optimizer' => ['required'],
-            'data_aug' => ['required'],
-            'epochs' => ['required', 'gt:0'],
-            'callback' => ['required'],
-            'lr' => ['required', 'min:0.0000001', 'max:0.1']
+            'model' => ['required', 'string'],
+            'optimizer' => ['required', 'string'],
+            'data_aug' => ['required', 'string'],
+            'epochs' => ['required', 'integer', 'min:1', 'max:20'],
+            'callback' => ['required', 'string'],
+            'lr' => ['required', 'numeric', 'min:0.0000001', 'max:0.1']
         ]);
-        $data = $request(['model', 'optimizer', 'data_aug', 'epochs', 'callback', 'lr']);
-        $response = Http::post($serverUrl, $data);
+
+        $response = Http::post($serverUrl, [
+            'model' => $request->model,
+            'optimizer' => $request->optimizer,
+            'data_aug' => $request->data_aug,
+            'epochs' => $request->epochs,
+            'callback' => $request->callback,
+            'lr' => $request->lr
+        ]);
         return $response->body();
     }
 }
