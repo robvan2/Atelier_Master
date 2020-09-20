@@ -49,7 +49,7 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p class="text-center">Bonjour Admin</p>
+                    <p class="text-center">Bonjour {{Auth::user()->name}}</p>
                     <li class="">
                         <a href="#prediction" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             Prédictions

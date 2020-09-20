@@ -15,7 +15,7 @@
     <div class="row">
         <div class="container-fluid">
             <div class="row">
-                <form class="form col-10 offset-1" method="POST" action="/model/training">
+                <form class="form col-10 offset-1" method="POST" onsubmit="startTrain(this);">
                     @csrf
                         <div class="line"></div>
                         <div class="row">
@@ -74,7 +74,10 @@
 
                         @include('layouts.errors')
 
-                    <button type="submit"  onclick="hide()"class="btn btn-success btn-lg btn-block mt-3">envoyer</button>
+                        <button id="sub" type="submit" class="mb-3 mt-3 btn btn-lg btn-success col">
+                            <span id="loading" class="spinner-border spinner-border-md mr-2" role="status" aria-hidden="true" style="display: none"></span>
+                            Envoyer
+                        </button>
                 </form>
             </div>
 
@@ -82,25 +85,27 @@
         </div>
     </div>
 
-    <!--div class="row mt-5">
-        <div class="col-2"></div>
-        <div class="col-8">
 
-            <div class="progress" id='progress'>
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-            </div>
-        </div>
-    <div class="col-2"></div-->
 
 </div>
 
-<!--script>
-
-    function hide(){
-
-        document.getElementById('progress').style.
-
-    }
-</script-->
+<script>
+    function startTrain(form) {
+            event.preventDefault();
+            var sub = $('#sub');
+            let span = $('#loading');
+            span.css('display','');
+            sub.html(span);
+            let formData = new FormData(form);
+            axios.post('/model/training',formData)
+                .then(function (response) {
+                    alert(response.data['success']);
+                    span.css('display','none');
+                    sub.html(sub.html() + 'Envoyer');
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+     };
+</script>
 @endsection
