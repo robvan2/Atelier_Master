@@ -156,6 +156,7 @@
                         percentage = ''+(100-response2.data.percentage) + ' %';
                     } else {
                         percentage = response2.data.percentage + ' %';
+                        percentage = percentage.subString(0,5);
                     }
                     $('#percentage').html(percentage);
                     $('#pred').html(prediction);
